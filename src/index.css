@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 17 24 39;
+    scroll-padding-top: 64px; /* Match navbar height */
+    scroll-behavior: smooth;
+  }
+
+  .dark {
+    --background: 17 24 39;
+    --foreground: 255 255 255;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+    overflow-y: scroll;
+    padding-top: env(safe-area-inset-top);
+  }
+
+  /* Improve touch target sizes on mobile */
+  @media (max-width: 768px) {
+    button, a {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.5rem;
+    }
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--foreground) / 0.2);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--foreground) / 0.3);
+  }
+}
+
+@layer components {
+  .container-width {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 sm:py-24 md:py-32;
+  }
+
+  .section-margin {
+    @apply my-16 sm:my-24 md:my-32;
+  }
+
+  .btn {
+    @apply px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-gray-900 text-white hover:bg-gray-800
+           dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100;
+  }
+
+  /* Animation utilities */
+  .animate-in {
+    animation: animate-in 0.2s ease-out;
+  }
+
+  .fade-in-80 {
+    opacity: 0.8;
+  }
+
+  .slide-in-from-top-1 {
+    transform: translateY(-1%);
+  }
+
+  .slide-in-from-bottom-1 {
+    transform: translateY(1%);
+  }
+}
+
+@keyframes animate-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Optimize performance */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
