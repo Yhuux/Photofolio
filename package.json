@@ -1,15 +1,15 @@
 {
-  "name": "My new app",
-  "private": true,
+  "name": "Photofolio",
+  "homepage": "https://Yhuux.github.io/Photofolio/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "lint": "eslint src --ext js.jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -r https://github.com/Yhuux/Photofolio.git"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@fontsource/roboto": "^5.1.0",
